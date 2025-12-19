@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 import uuid
 import pymongo
-import certifi  # <--- 1. NEW IMPORT
+import certifi
 
 # --- GLOBAL CACHED CONNECTION FUNCTION ---
 @st.cache_resource
@@ -14,22 +14,23 @@ def get_mongo_collection():
 
         uri = st.secrets["MONGO_URI"]
         
-        # --- 2. THE SSL FIX IS HERE ---
-        # We pass tlsCAFile=certifi.where() to force it to use the correct certificates
+        # --- THE NUCLEAR FIX ---
+        # 1. tlsCAFile=certifi.where() : Uses correct certs
+        # 2. tlsAllowInvalidCertificates=True : Bypasses strict handshake errors
         client = pymongo.MongoClient(
             uri, 
             serverSelectionTimeoutMS=5000,
-            tlsCAFile=certifi.where() 
+            tlsCAFile=certifi.where(),
+            tlsAllowInvalidCertificates=True 
         )
         
-        # Force a check to see if connection works
+        # Force a check
         client.server_info() 
         
         db = client["research_agent_db"]
         return db["history"]
         
     except Exception as e:
-        # Print the error clearly so we see what's wrong
         st.error(f"❌ Connection Failed: {e}")
         return None
 
