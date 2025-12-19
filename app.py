@@ -5,13 +5,19 @@ from utils import extract_pdf_text
 from graph_builder import build_graph
 
 # ==========================================
-# 🔐 IMPORT API KEYS FROM CONFIG
+# 🔐 SECURE API KEY HANDLING
 # ==========================================
+# Try loading from local config first, otherwise check Cloud Secrets
 try:
     from config import OPENROUTER_API_KEY, TAVILY_API_KEY
 except ImportError:
-    st.error("⚠️ `config.py` file not found! Please create it with your API keys.")
-    st.stop()
+    # This runs when deployed on Streamlit Cloud
+    if "OPENROUTER_API_KEY" in st.secrets and "TAVILY_API_KEY" in st.secrets:
+        OPENROUTER_API_KEY = st.secrets["OPENROUTER_API_KEY"]
+        TAVILY_API_KEY = st.secrets["TAVILY_API_KEY"]
+    else:
+        st.error("🚨 API Keys not found! Please set them in Streamlit Secrets.")
+        st.stop()
 # ==========================================
 
 # --- PAGE CONFIG ---
