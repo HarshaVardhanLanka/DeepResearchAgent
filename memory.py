@@ -2,21 +2,25 @@ import streamlit as st
 import datetime
 import uuid
 import pymongo
+import certifi  # <--- 1. NEW IMPORT
 
-# --- 1. GLOBAL CACHED CONNECTION FUNCTION ---
-# This ensures we connect ONLY ONCE, not every time you refresh.
+# --- GLOBAL CACHED CONNECTION FUNCTION ---
 @st.cache_resource
 def get_mongo_collection():
     try:
-        # Check if secret exists
         if "MONGO_URI" not in st.secrets:
             st.error("❌ MONGO_URI missing in Secrets!")
             return None
 
         uri = st.secrets["MONGO_URI"]
         
-        # Connect with a timeout so it doesn't hang forever
-        client = pymongo.MongoClient(uri, serverSelectionTimeoutMS=5000)
+        # --- 2. THE SSL FIX IS HERE ---
+        # We pass tlsCAFile=certifi.where() to force it to use the correct certificates
+        client = pymongo.MongoClient(
+            uri, 
+            serverSelectionTimeoutMS=5000,
+            tlsCAFile=certifi.where() 
+        )
         
         # Force a check to see if connection works
         client.server_info() 
@@ -25,12 +29,12 @@ def get_mongo_collection():
         return db["history"]
         
     except Exception as e:
+        # Print the error clearly so we see what's wrong
         st.error(f"❌ Connection Failed: {e}")
         return None
 
 class HistoryManager:
     def __init__(self):
-        # Load the cached collection
         self.collection = get_mongo_collection()
 
     def load_history(self):
@@ -39,14 +43,8 @@ class HistoryManager:
             return []
             
         try:
-            # Sort by timestamp descending (newest first)
-            # We sort in Python to keep it simple, or use .sort() in Mongo
             cursor = self.collection.find({}, {"_id": 0})
             history = list(cursor)
-            
-            # Optional: Sort locally by timestamp if needed
-            # history.sort(key=lambda x: x['timestamp'], reverse=True)
-            
             return history
         except Exception as e:
             st.error(f"Error loading history: {e}")
