@@ -118,7 +118,7 @@ with st.sidebar:
                 st.session_state.pdf_name = None
                 st.rerun()
 
-    # --- TAB 3: HISTORY (Modified for Date Format) ---
+        # --- TAB 3: HISTORY (Modified for Smart Date/Time) ---
     with tab_history:
         st.subheader("Past Researches")
         history = memory.load_history()
@@ -126,23 +126,34 @@ with st.sidebar:
             st.caption("No history yet.")
         else:
             for entry in reversed(history):
-                # --- DATE FORMATTING ---
-                # Parse the timestamp string "YYYY-MM-DD HH:MM"
+                # --- SMART DATE LOGIC ---
                 try:
+                    # 1. Parse the stored timestamp string
                     dt_obj = datetime.strptime(entry['timestamp'], "%Y-%m-%d %H:%M")
-                    # Format as "27 Oct 2023"
-                    date_label = dt_obj.strftime("%d %b %Y")
-                except:
-                    date_label = entry['timestamp'] # Fallback if error
+                    
+                    # 2. Get current date
+                    now = datetime.now()
+                    
+                    # 3. Compare dates
+                    if dt_obj.date() == now.date():
+                        # If TODAY: Show 12-hour time (e.g., "02:30 PM")
+                        time_label = dt_obj.strftime("%I:%M %p")
+                    else:
+                        # If OLDER: Show Date (e.g., "27 Oct 2023")
+                        time_label = dt_obj.strftime("%d %b %Y")
+                        
+                except Exception:
+                    # Fallback if format is wrong
+                    time_label = entry['timestamp']
 
-                short_input = entry['input'][:15] + "..." if len(entry['input']) > 15 else entry['input']
-                label = f"{date_label} - {short_input}"
+                # Create the label
+                short_input = entry['input'][:18] + "..." if len(entry['input']) > 18 else entry['input']
+                label = f"{time_label} - {short_input}"
                 
-                # Expander Layout
+                # --- EXPANDER LAYOUT (Same as before) ---
                 with st.expander(label):
                     st.caption(f"**Full Topic:** {entry['input']}")
                     
-                    # Columns for Actions (View, Resume, Delete)
                     col1, col2, col3 = st.columns(3)
                     
                     with col1:
