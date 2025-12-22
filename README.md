@@ -38,7 +38,7 @@ Since this agent relies on **Cloud APIs** (OpenRouter, Tavily) for the heavy com
 
 The system is built on a **State Graph** architecture using `LangGraph`. It treats the research process as a pipeline of specialized agents passing a "State" object between them.
 
-![Architecture Diagram](path_to_your_architecture_diagram.png)
+![Architecture Diagram](architecture_diagram.png)
 *(Replace the link above with your actual diagram image path)*
 
 ### 🔄 The Workflow
