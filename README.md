@@ -147,7 +147,7 @@ The **Open Deep Research Agent** represents a shift from static search to **agen
 
 1. **Clone the Repo:**
    ```bash
-   git clone https://github.com/your-username/deep-research-agent.git
+   git clone https://github.com/HarshaVardhanLanka/DeepResearchAgent.git
    cd deep-research-agent
    ```
 
