@@ -4,7 +4,7 @@
 
 ### An Autonomous AI Researcher powered by LangGraph, Tavily, and OpenRouter.
 
-[![Streamlit App](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)](YOUR_STREAMLIT_APP_LINK_HERE)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)
 
 ## 📖 Overview
 
@@ -39,7 +39,6 @@ Since this agent relies on **Cloud APIs** (OpenRouter, Tavily) for the heavy com
 The system is built on a **State Graph** architecture using `LangGraph`. It treats the research process as a pipeline of specialized agents passing a "State" object between them.
 
 ![Architecture Diagram](architecture_diagram.png)
-*(Replace the link above with your actual diagram image path)*
 
 ### 🔄 The Workflow
 
@@ -140,7 +139,7 @@ While powerful, the agent has current limitations we aim to solve:
 The **Open Deep Research Agent** represents a shift from static search to **agentic research**. By combining the reasoning capabilities of LLMs with the real-time knowledge of the web and the persistence of a database, it offers a robust tool for students, researchers, and professionals who need deep insights fast.
 
 ### 🔗 Access the Live Agent
-**[Click Here to Start Researching](YOUR_STREAMLIT_APP_LINK_HERE)**
+**[Click Here to Start Researching](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)**
 
 ---
 
