@@ -4,13 +4,33 @@
 
 ### An Autonomous AI Researcher powered by LangGraph, Tavily, and OpenRouter.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR_STREAMLIT_APP_LINK_HERE)
+[![Streamlit App](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)](YOUR_STREAMLIT_APP_LINK_HERE)
 
 ## 📖 Overview
 
 The **Open Deep Research Agent** is not just a chatbot—it is an autonomous research assistant designed to perform in-depth web analysis and document synthesis. Unlike standard LLMs that rely solely on training data, this agent actively browses the web, verifies facts, and compiles structured reports with citations.
 
 It features a **Memory System** backed by MongoDB to store your research history and supports **PDF Analysis** to combine internal documents with external web knowledge.
+
+---
+
+## 💻 System Requirements
+
+Since this agent relies on **Cloud APIs** (OpenRouter, Tavily) for the heavy computational lifting, it is lightweight to run locally. You do **not** need a high-end GPU.
+
+### ⚙️ Hardware Requirements
+*   **Processor (CPU):** Minimum Dual-core processor (Intel i3/Ryzen 3 or equivalent).
+*   **RAM:** 4 GB minimum (8 GB recommended for smoother PDF processing).
+*   **Storage:** At least 500 MB free space (for libraries and temporary PDF storage).
+*   **Internet Connection:** **Critical.** A stable broadband connection is required as the agent constantly communicates with external APIs and the MongoDB cloud database.
+*   **GPU:** **Not Required.** (LLM inference is handled via API).
+
+### 💿 Software Requirements
+*   **Operating System:** Windows 10/11, macOS (Ventura or later), or Linux (Ubuntu 20.04+).
+*   **Python:** Version **3.9** to **3.11** (Recommended: 3.10).
+*   **Web Browser:** Latest version of Chrome, Firefox, Edge, or Safari.
+*   **Code Editor:** VS Code (Recommended) or PyCharm for local development.
+*   **Git:** To clone the repository.
 
 ---
 
