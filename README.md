@@ -148,15 +148,20 @@ The **Open Deep Research Agent** represents a shift from static search to **agen
 1. **Clone the Repo:**
    ```bash
    git clone https://github.com/HarshaVardhanLanka/DeepResearchAgent.git
-   cd deep-research-agent
    ```
-
-2. **Install Requirements:**
+   
+2. **Create a Virtual Environment:**
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+   
+3. **Install Requirements:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure Secrets:**
+4. **Configure Secrets:**
    Create a `.streamlit/secrets.toml` file:
    ```toml
    OPENROUTER_API_KEY = "sk-..."
@@ -164,7 +169,7 @@ The **Open Deep Research Agent** represents a shift from static search to **agen
    MONGO_URI = "mongodb+srv://..."
    ```
 
-4. **Run the App:**
+5. **Run the App:**
    ```bash
    streamlit run app.py
    ```
