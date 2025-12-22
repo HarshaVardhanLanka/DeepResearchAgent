@@ -4,7 +4,7 @@
 
 ### An Autonomous AI Researcher powered by LangGraph, Tavily, and OpenRouter.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([YOUR_STREAMLIT_APP_LINK_HERE](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/))
 
 ## 📖 Overview
 
