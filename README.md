@@ -143,11 +143,12 @@ The **Open Deep Research Agent** represents a shift from static search to **agen
 
 ---
 
-### 💻 Local Setup Guide
+### 💻 Local Setup Guide (Execute each line seperately)
 
 1. **Clone the Repo:**
    ```bash
    git clone https://github.com/HarshaVardhanLanka/DeepResearchAgent.git
+   cd DeepResearchAgent
    ```
    
 2. **Create a Virtual Environment:**
@@ -173,3 +174,4 @@ The **Open Deep Research Agent** represents a shift from static search to **agen
    ```bash
    streamlit run app.py
    ```
+   
