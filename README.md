@@ -6,7 +6,7 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)
 
-## 📖 Overview
+##  Overview
 
 The **Open Deep Research Agent** is not just a chatbot—it is an autonomous research assistant designed to perform in-depth web analysis and document synthesis. Unlike standard LLMs that rely solely on training data, this agent actively browses the web, verifies facts, and compiles structured reports with citations.
 
@@ -14,18 +14,18 @@ It features a **Memory System** backed by MongoDB to store your research history
 
 ---
 
-## 💻 System Requirements
+##  System Requirements
 
 Since this agent relies on **Cloud APIs** (OpenRouter, Tavily) for the heavy computational lifting, it is lightweight to run locally. You do **not** need a high-end GPU.
 
-### ⚙️ Hardware Requirements
+###  Hardware Requirements
 *   **Processor (CPU):** Minimum Dual-core processor (Intel i3/Ryzen 3 or equivalent).
 *   **RAM:** 4 GB minimum (8 GB recommended for smoother PDF processing).
 *   **Storage:** At least 500 MB free space (for libraries and temporary PDF storage).
 *   **Internet Connection:** **Critical.** A stable broadband connection is required as the agent constantly communicates with external APIs and the MongoDB cloud database.
 *   **GPU:** **Not Required.** (LLM inference is handled via API).
 
-### 💿 Software Requirements
+###  Software Requirements
 *   **Operating System:** Windows 10/11, macOS (Ventura or later), or Linux (Ubuntu 20.04+).
 *   **Python:** Version **3.9** to **3.11** (Recommended: 3.10).
 *   **Web Browser:** Latest version of Chrome, Firefox, Edge, or Safari.
@@ -34,13 +34,13 @@ Since this agent relies on **Cloud APIs** (OpenRouter, Tavily) for the heavy com
 
 ---
 
-## 🏗️ Architecture & Workflow
+##  Architecture & Workflow
 
 The system is built on a **State Graph** architecture using `LangGraph`. It treats the research process as a pipeline of specialized agents passing a "State" object between them.
 
 ![Architecture Diagram](architecture_diagram.png)
 
-### 🔄 The Workflow
+###  The Workflow
 
 The agent follows a cyclical workflow to ensure high-quality output:
 
@@ -61,34 +61,34 @@ graph LR
 
 ---
 
-## 🕵️ The Agents
+##  Agent Roles 
 
-The power of this application lies in the separation of concerns. Instead of one AI doing everything, we split the logic into three distinct roles:
+Here is how the individual components interact to form the intelligent system:
 
-### 1. 🧠 The Planner Agent
-*   **Role:** The Strategist.
-*   **Function:** It analyzes the conversation history to detect context.
-    *   *Is this a follow-up?* -> It generates queries to clarify previous points.
-    *   *Is this a new topic?* -> It strictly ignores previous context to prevent "hallucination merging."
-*   **Output:** A list of precise search queries optimized for search engines.
+###  Planner
+The **Planner** acts as the strategist. It is responsible for decision-making before any action is taken.
+*   **Context Analysis:** It compares the current query with chat history to classify the intent.
+*   **Decision Logic:** It strictly differentiates between a **Follow-up** (bridging context) and a **New Topic** (ignoring history to prevent hallucinations).
+*   **Output:** It generates precise, optimized search queries rather than generic text.
 
-### 2. 🔎 The Searcher Agent
-*   **Role:** The Investigator.
-*   **Function:** It takes the queries from the Planner and uses the **Tavily Search API**.
-*   **Capabilities:** It doesn't just get links; it scrapes the content, filters out ads/noise, and extracts the raw text relevant to the query.
-*   **Output:** A structured block of "Verified Search Data" containing Titles, URLs, and Content snippets.
+###  Writer / Executor
+The **Writer** serves as the synthesizer and executor. It transforms raw data into human-readable insight.
+*   **Adaptive Formatting:** It dynamically switches styles—producing concise **single paragraphs** for specific answers or detailed **Markdown reports** for deep research.
+*   **Fact Verification:** It ensures all claims are backed by the search data.
+*   **Citation Engine:** In Academic Mode, it links specific URLs to claims; in General Mode, it provides a clean summary.
 
-### 3. ✍️ The Writer Agent
-*   **Role:** The Author.
-*   **Function:** It reads the raw data and drafts the final response.
-*   **Logic:** It adheres to strict formatting rules:
-    *   *General Mode:* detailed summaries.
-    *   *Academic Mode:* Strict citation styles and research paper structure.
-*   **Output:** A clean, Markdown-formatted report with clickable citations.
+###  Pipeline / Agent Flow
+The system operates on a linear state graph built with **LangGraph**:
+
+1.  **State Initialization:** The User Input and History are loaded into the shared State.
+2.  **Plan:** The Planner Node analyzes the state and outputs a search strategy.
+3.  **Execution (Search):** The Searcher Node executes the strategy using the Tavily API to gather live web content and PDF context.
+4.  **Synthesis:** The Writer Node compiles the gathered data into the final response.
+5.  **Persistence:** The final state is saved to the **MongoDB Cloud** for long-term memory.
 
 ---
 
-## 🛠️ Installation & Dependencies
+##  Installation & Dependencies
 
 This project relies on a modern AI stack. Here is how each dependency contributes:
 
@@ -104,7 +104,7 @@ This project relies on a modern AI stack. Here is how each dependency contribute
 
 ---
 
-## 🔑 API Requirements
+##  API Requirements
 
 To run this agent, you need the following API keys:
 
@@ -117,16 +117,42 @@ To run this agent, you need the following API keys:
 
 ---
 
-## ⚖️ Limitations & Future Roadmap
+##  Outputs / Results
+
+The **Open Deep Research Agent** is designed to produce high-quality, structured text outputs tailored to the user's selected mode.
+
+### 1. Output Types
+The system dynamically adjusts its output format based on the "Settings" tab:
+
+*   **General Web Reports:**
+    *   Produces articulate, easy-to-read summaries suitable for general knowledge or quick answers.
+    *   Focuses on clarity, bullet points, and direct answers.
+*   **Academic Research Papers:**
+    *   Produces a rigorous academic format including **Abstract, Literature Review, Methodology, and References**.
+    *   Enforces strict citation rules (clickable Markdown links) and technical depth.
+*   **PDF Analysis:**
+    *   Combines internal knowledge (from uploaded documents) with external web validation.
+
+### 2. Sample Screenshots
+
+| **Dashboard & History** | **Generated Academic Report** |
+|:---:|:---:|
+| *[Place Screenshot of Sidebar/History here]* | *[Place Screenshot of a Final Report here]* |
+| <img src="https://via.placeholder.com/400x200?text=Upload+Dashboard+Screenshot" width="100%"> | <img src="https://via.placeholder.com/400x200?text=Upload+Report+Screenshot" width="100%"> |
+
+
+---
+
+##  Limitations & Future Roadmap
 
 While powerful, the agent has current limitations we aim to solve:
 
-### ❌ Current Drawbacks
+###  Current Drawbacks
 1.  **Token Context Window:** Extremely large PDFs (>100 pages) may be truncated because LLMs have a limit on how much text they can read at once.
 2.  **Sequential Processing:** The agent works in steps (Plan -> Search -> Write). If the search fails, the report may be weak. It doesn't yet "self-correct" and search again automatically.
 3.  **PDF Images:** It currently extracts text only. Graphs and charts inside PDFs are ignored.
 
-### 🚀 Future Improvements
+###  Future Improvements
 *   **Self-Correction Loop:** Implementing a "Reviewer Node" that checks the quality of the report and sends it back to the Searcher if data is missing.
 *   **GraphRAG:** Implementing a Knowledge Graph to better connect dots between different research papers.
 *   **OCR Integration:** Adding a vision model to read charts and images within PDFs.
@@ -134,7 +160,7 @@ While powerful, the agent has current limitations we aim to solve:
 
 ---
 
-## 🏁 Conclusion
+##  Conclusion
 
 The **Open Deep Research Agent** represents a shift from static search to **agentic research**. By combining the reasoning capabilities of LLMs with the real-time knowledge of the web and the persistence of a database, it offers a robust tool for students, researchers, and professionals who need deep insights fast.
 
