@@ -137,8 +137,7 @@ The system dynamically adjusts its output format based on the "Settings" tab:
 
 | **Dashboard & History** | **Generated Academic Report** |
 |:---:|:---:|
-| *[Place Screenshot of Sidebar/History here]* | *[Place Screenshot of a Final Report here]* |
-| <img src="https://via.placeholder.com/400x200?text=Upload+Dashboard+Screenshot" width="100%"> | <img src="https://via.placeholder.com/400x200?text=Upload+Report+Screenshot" width="100%"> |
+| <img src="Dashboard&History.jpg" width="100%"> | <img src="Final_Report.jpg" width="100%"> |
 
 
 ---
