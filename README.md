@@ -26,8 +26,8 @@ Since this agent relies on **Cloud APIs** (OpenRouter, Tavily) for the heavy com
 *   **GPU:** **Not Required.** (LLM inference is handled via API).
 
 ###  Software Requirements
-*   **Operating System:** Windows 10/11, macOS (Ventura or later), or Linux (Ubuntu 20.04+).
-*   **Python:** Version **3.9** to **3.11** (Recommended: 3.10).
+*   **Operating System:** Windows 10/11.
+*   **Python:** Version **3.11** or later versions
 *   **Web Browser:** Latest version of Chrome, Firefox, Edge, or Safari.
 *   **Code Editor:** VS Code (Recommended) or PyCharm for local development.
 *   **Git:** To clone the repository.
