@@ -88,6 +88,23 @@ The system operates on a linear state graph built with **LangGraph**:
 
 ---
 
+## 🧠 Memory & History Management
+
+The Open Deep Research Agent features a robust, persistent memory system designed to handle long-term research data without "context pollution."
+
+### 1. Cloud Storage (MongoDB Atlas)
+Unlike simple chatbots that lose data when the tab closes, this agent uses **MongoDB Atlas (Cloud Database)** for persistent storage.
+*   **Auto-Save:** Every research query, generated report, and chat exchange is automatically securely saved to the cloud.
+*   **Cross-Device:** Since data is cloud-hosted, you can access your research history from any device or browser.
+*   **Management:** Users can **View** past reports, **Resume** old conversations, or **Delete** irrelevant entries permanently from the database.
+
+### 2. Smart Context Logic
+To maintain high performance and accuracy, the agent uses a **Sliding Window Strategy**:
+*   **Token Optimization:** The agent actively recalls the full text of the **last 2 exchanges** for immediate follow-ups.
+*   **Context Truncation:** Older messages (up to 10) are summarized or truncated. This prevents the "Ghosting Effect" (where the AI gets confused by old, irrelevant topics).
+*   **Topic Isolation:** The **Planner Agent** intelligently analyzes new queries. If it detects a **New Topic** (unrelated to history), it forces the system to ignore previous context, ensuring a fresh, unbiased search.
+
+```
 ##  Installation & Dependencies
 
 This project relies on a modern AI stack. Here is how each dependency contributes:
