@@ -105,6 +105,31 @@ To maintain high performance and accuracy, the agent uses a **Sliding Window Str
 *   **Topic Isolation:** The **Planner Agent** intelligently analyzes new queries. If it detects a **New Topic** (unrelated to history), it forces the system to ignore previous context, ensuring a fresh, unbiased search.
 
 ---
+
+## 📈 Outputs / Results
+
+The **Open Deep Research Agent** is designed to produce high-quality, structured text outputs tailored to the user's selected mode.
+
+### 1. Output Types
+The system dynamically adjusts its output format based on the "Settings" tab:
+
+*   **General Web Reports:**
+    *   Produces articulate, easy-to-read summaries suitable for general knowledge or quick answers.
+    *   Focuses on clarity, bullet points, and direct answers.
+*   **Academic Research Papers:**
+    *   Produces a rigorous academic format including **Abstract, Literature Review, Methodology, and References**.
+    *   Enforces strict citation rules (clickable Markdown links) and technical depth.
+*   **PDF Analysis:**
+    *   Combines internal knowledge (from uploaded documents) with external web validation.
+
+### 2. Sample Screenshots
+
+| **Dashboard & History** | **Generated Academic Report** |
+|:---:|:---:|
+| *[Screenshot of Sidebar/History]* | *[Screenshot of a Final Report]* |
+| <img src="Dashboard&History.jpg" width="100%"> | <img src="Final_Report.jpg" width="100%"> |
+
+
 ---
 
 ## 🛠️ Installation & Dependencies
