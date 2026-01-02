@@ -88,7 +88,7 @@ The system operates on a linear state graph built with **LangGraph**:
 
 ---
 
-## 🧠 Memory & History Management
+##  Memory & History Management
 
 The Open Deep Research Agent features a robust, persistent memory system designed to handle long-term research data without "context pollution."
 
@@ -106,7 +106,7 @@ To maintain high performance and accuracy, the agent uses a **Sliding Window Str
 
 ---
 
-## 📈 Outputs / Results
+##  Outputs / Results
 
 The **Open Deep Research Agent** is designed to produce high-quality, structured text outputs tailored to the user's selected mode.
 
@@ -132,7 +132,7 @@ The system dynamically adjusts its output format based on the "Settings" tab:
 
 ---
 
-## 🛠️ Installation & Dependencies
+##  Installation & Dependencies
 
 This project relies on a modern AI stack. Here is how each dependency contributes:
 
@@ -148,7 +148,7 @@ This project relies on a modern AI stack. Here is how each dependency contribute
 
 ---
 
-## 🔑 API Requirements
+##  API Requirements
 
 To run this agent, you need the following API keys:
 
@@ -161,16 +161,16 @@ To run this agent, you need the following API keys:
 
 ---
 
-## ⚖️ Limitations & Future Roadmap
+##  Limitations & Future Roadmap
 
 While powerful, the agent has current limitations we aim to solve:
 
-### ❌ Current Drawbacks
+###  Current Drawbacks
 1.  **Token Context Window:** Extremely large PDFs (>100 pages) may be truncated because LLMs have a limit on how much text they can read at once.
 2.  **Sequential Processing:** The agent works in steps (Plan -> Search -> Write). If the search fails, the report may be weak. It doesn't yet "self-correct" and search again automatically.
 3.  **PDF Images:** It currently extracts text only. Graphs and charts inside PDFs are ignored.
 
-### 🚀 Future Improvements
+###  Future Improvements
 *   **Self-Correction Loop:** Implementing a "Reviewer Node" that checks the quality of the report and sends it back to the Searcher if data is missing.
 *   **GraphRAG:** Implementing a Knowledge Graph to better connect dots between different research papers.
 *   **OCR Integration:** Adding a vision model to read charts and images within PDFs.
@@ -178,7 +178,7 @@ While powerful, the agent has current limitations we aim to solve:
 
 ---
 
-## 🏁 Conclusion
+##  Conclusion
 
 The **Open Deep Research Agent** represents a shift from static search to **agentic research**. By combining the reasoning capabilities of LLMs with the real-time knowledge of the web and the persistence of a database, it offers a robust tool for students, researchers, and professionals who need deep insights fast.
 
