@@ -144,7 +144,6 @@ This project relies on a modern AI stack. Here is how each dependency contribute
 | **`tavily-python`** | A search engine specifically built for AI agents. It returns clean text instead of messy HTML. |
 | **`pymongo`** | Connects the app to MongoDB Atlas (Cloud) to save chat history permanently. |
 | **`pypdf`** | Extracts text from uploaded PDF research papers so the agent can "read" them. |
-| **`certifi`** | Provides SSL certificates to ensure secure connections to the database. |
 
 ---
 
