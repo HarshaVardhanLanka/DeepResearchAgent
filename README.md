@@ -45,12 +45,14 @@ The system is built on a **State Graph** architecture using `LangGraph`. It trea
 The agent follows a cyclical workflow to ensure high-quality output:
 
 ```mermaid
+
 graph LR
     User(User Input) --> Planner
     Planner(🧠 Planner Agent) -->|Generates Queries| Searcher
     Searcher(🔎 Searcher Agent) -->|Web Results| Writer
     Writer(✍️ Writer Agent) -->|Final Report| Output
     Output -->|Save| MongoDB
+
 ```
 
 1.  **User Input:** The user provides a topic or uploads a PDF.
