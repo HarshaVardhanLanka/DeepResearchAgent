@@ -19,7 +19,7 @@ def build_graph(openrouter_api_key, tavily_api_key):
     # We use "nvidia/llama-3.1-nemotron-70b-instruct" as it is fast and powerful.
     # You can change this string to "openai/gpt-4o-mini" or others on OpenRouter.
     llm = ChatOpenAI(
-        model="nvidia/llama-3.1-nemotron-70b-instruct:free", 
+        model="nvidia/nemotron-3-ultra-550b-a55b:free", 
         openai_api_key=openrouter_api_key,
         openai_api_base="https://openrouter.ai/api/v1",
         temperature=0.5
