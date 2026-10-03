@@ -16,10 +16,10 @@ def build_graph(openrouter_api_key, tavily_api_key):
     """
     
     # 1. Setup OpenRouter LLM
-    # We use "deepseek/deepseek-r1:free" as it is fast and powerful.
+    # We use "nvidia/llama-3.1-nemotron-70b-instruct" as it is fast and powerful.
     # You can change this string to "openai/gpt-4o-mini" or others on OpenRouter.
     llm = ChatOpenAI(
-        model="deepseek/deepseek-r1:free", 
+        model="nvidia/llama-3.1-nemotron-70b-instruct", 
         openai_api_key=openrouter_api_key,
         openai_api_base="https://openrouter.ai/api/v1",
         temperature=0.5
