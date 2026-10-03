@@ -16,10 +16,10 @@ def build_graph(openrouter_api_key, tavily_api_key):
     """
     
     # 1. Setup OpenRouter LLM
-    # We use "google/gemini-2.0-flash-exp:free" as it is fast and powerful.
+    # We use "meta-llama/llama-3.3-70b-instruct:free" as it is fast and powerful.
     # You can change this string to "openai/gpt-4o-mini" or others on OpenRouter.
     llm = ChatOpenAI(
-        model="google/gemini-2.0-flash-exp:free", 
+        model="meta-llama/llama-3.3-70b-instruct:free", 
         openai_api_key=openrouter_api_key,
         openai_api_base="https://openrouter.ai/api/v1",
         temperature=0.5
