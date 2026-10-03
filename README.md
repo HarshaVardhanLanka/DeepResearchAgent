@@ -4,7 +4,7 @@
 
 ### An Autonomous AI Researcher powered by LangGraph, Tavily, and OpenRouter.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://https://opendeepresearchagent.streamlit.app/)
 
 ##  Overview
 
@@ -183,7 +183,7 @@ The **Open Deep Research Agent** represents a shift from static search to **agen
 
 
 ### 🔗 Access the Live Agent
-**[Click Here to Start Researching](https://deepresearchagent-mffwgepvlhywhla8tosr8z.streamlit.app/)**
+**[Click Here to Start Researching](https://https://opendeepresearchagent.streamlit.app/)**
 
 ---
 
